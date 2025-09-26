@@ -3,12 +3,16 @@
 
 %Predicado que será enviado para o aluno 3
 recomenda(ListaOrdenada, Justificativa) :-
-
-    write('Lógica de recomendação a ser implementada'), nl.
+    findall(Trilha, Trilha, ListaDeTrilhas),
+    findall(Trilha, calcula_pontuacao(Trilha, Pontuacao, _), ListaPontuacao),
+    findall(Trilha, calcula_pontuacao(Trilha, _, Justificativa), ListaJustificativa)
+    %arrumar a logica do recomenda(faltar ordenar e arrumar as logicas do findall)
 
 calcula_pontuacao(Trilha, Pontuacao, Justificativa) :-
-
-    write('Logica de calculo de pontuacao a ser implementada para a trilha: '), write(Trilha), nl.
+    findall(perfil(Trilha, Caracteristica, Peso), 
+        perfil(Trilha, Caracteristica, Peso),
+        ListaDePerfis),
+    soma_pontos_perfis(ListaDePerfis, Pontuacao, Justificativa).
 
 soma_pontos_perfis([], 0, []).
 
