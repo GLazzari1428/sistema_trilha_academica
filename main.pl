@@ -3,13 +3,14 @@
 
 %Predicado que será enviado para o aluno 3
 recomenda(ListaOrdenada, Justificativa) :-
-    findall(Trilha, Trilha, ListaDeTrilhas),
+    findall([Trilha, Pontuacao], trilha(Trilha, _), ListaDeTrilhas),
     findall(Trilha, calcula_pontuacao(Trilha, Pontuacao, _), ListaPontuacao),
     findall(Trilha, calcula_pontuacao(Trilha, _, Justificativa), ListaJustificativa)
     %arrumar a logica do recomenda(faltar ordenar e arrumar as logicas do findall)
 
 calcula_pontuacao(Trilha, Pontuacao, Justificativa) :-
-    findall(perfil(Trilha, Caracteristica, Peso), 
+    findall(
+        perfil(Trilha, Caracteristica, Peso), 
         perfil(Trilha, Caracteristica, Peso),
         ListaDePerfis),
     soma_pontos_perfis(ListaDePerfis, Pontuacao, Justificativa).
