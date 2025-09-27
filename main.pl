@@ -1,20 +1,29 @@
 % Consultar a base
 :- consult('base_conhecimento.pl').
 
-%Predicado que será enviado para o aluno 3
-recomenda(ListaOrdenada, Justificativa) :-
-    findall([Trilha, Pontuacao], trilha(Trilha, _), ListaDeTrilhas),
-    findall(Trilha, calcula_pontuacao(Trilha, Pontuacao, _), ListaPontuacao),
-    findall(Trilha, calcula_pontuacao(Trilha, _, Justificativa), ListaJustificativa)
-    %arrumar a logica do recomenda(faltar ordenar e arrumar as logicas do findall)
+%Predicado que será enviado para o aluno 3, e o predicado chefe.
+recomenda(ListaOrdenadaFinal, ListaJustificativaFinal) :-
+    %Procura as trilhas, pontuação e justificativa, para montar uma lista
+    findall(
+        [Trilha, Pontuacao, Justificativa],
+        (trilha(Trilha, _), calcula_pontuacao(Trilha, Pontuacao, Justificativa)),
+        ListaCompleta
+    ),
+    %Ordenação da Lista
+    predsort(comparar_pontuacoes, ListaCompleta, ListaCompletaOrdenada),
+    %Entregar as listas finais separadas
+    separar_resultados(ListaCompletaOrdenada, ListaOrdenadaFinal, ListaJustificativaFinal).
 
+%Calcula a pontuação da trilha
 calcula_pontuacao(Trilha, Pontuacao, Justificativa) :-
     findall(
         perfil(Trilha, Caracteristica, Peso), 
         perfil(Trilha, Caracteristica, Peso),
-        ListaDePerfis),
+        ListaDePerfis
+    ),
     soma_pontos_perfis(ListaDePerfis, Pontuacao, Justificativa).
 
+%Recursão para somar os resultados dos perfis
 soma_pontos_perfis([], 0, []).
 
 soma_pontos_perfis([PrimeiroPerfil | RestoDosPerfis], SomaTotal, JustificativaFormada) :-
@@ -24,6 +33,7 @@ soma_pontos_perfis([PrimeiroPerfil | RestoDosPerfis], SomaTotal, JustificativaFo
     SomaTotal is PontosGuardados + PontosRestante,
     append(JustificativaGuardada, JustificativaRestante, JustificativaFormada).
 
+%Calcula o resultado de um único perfil a partir das respostas de s/n
 pontos_por_perfil(perfil(Trilha, Caracteristica, Peso), Pontos, [Justificativa]) :-
     % debug: write('if rodou: '), write(Caracteristica), nl,
     pergunta(ID, _, Caracteristica),
@@ -32,4 +42,14 @@ pontos_por_perfil(perfil(Trilha, Caracteristica, Peso), Pontos, [Justificativa])
     swritef(Justificativa, 'Afinidade com %w (%w pts)', [Caracteristica, Peso]).
     %debug: write('Sucesso, if concluido'), nl.
 
-pontos_por_perfil(_, 0, [])
+pontos_por_perfil(_, 0, []).
+
+%Os dois predicados abaixo são para completar o recomenda, fazendo a ordenação e separação das listas respectivamente
+comparar_pontuacoes(Valor, [_Trilha1, Pontuacao1, _], [_Trilha2, Pontuacao2, _]) :-
+    ( Pontuacao1 > Pontuacao2 -> Valor = '<'; 
+    Pontuacao1 < Pontuacao2 -> Valor = '>';        
+    Valor = '=').
+
+separar_resultados([], [], []).
+separar_resultados([[Trilha, Pontuacao, Justificativa] | RestoCompleto], [[Trilha, Pontuacao] | RestoPontuacoes], [[Trilha, Justificativa] | RestoJustificativas]) :-
+    separar_resultados(RestoCompleto, RestoPontuacoes, RestoJustificativas).

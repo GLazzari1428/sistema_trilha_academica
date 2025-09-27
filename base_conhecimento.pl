@@ -64,4 +64,3 @@ pergunta(17, 'Você tem facilidade para criar visualizações de dados claras e 
 pergunta(18, 'Você sabe configurar servidores e gerenciar serviços?', configuracao_servidores).
 pergunta(19, 'Você tem experiência com gerenciamento de configurações em sistemas?', gerenciamento_de_configuracoes).
 pergunta(20, 'Você gosta de trabalhar com design de som e efeitos para jogos?', design_de_som).
-
