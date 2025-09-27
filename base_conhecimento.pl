@@ -1,11 +1,11 @@
-% Trilhas de especialização
-trilha(inteligencia_artificial, 'Desenvolvimento de sistemas inteligentes e aprendizado de máquina.').
-trilha(desenvolvimento_web, 'Criação e manutenção de sites e aplicações web.').
-trilha(seguranca_da_informacao, 'Proteção de dados e sistemas contra ameaças digitais.').
-trilha(ciencia_de_dados, 'Análise e interpretação de grandes volumes de dados para extrair conhecimento.').
+% Trilhas de especializacão
+trilha(inteligencia_artificial, 'Desenvolvimento de sistemas inteligentes e aprendizado de maquina.').
+trilha(desenvolvimento_web, 'Criacao e manutencao de sites e aplicacoes web.').
+trilha(seguranca_da_informacao, 'Protecao de dados e sistemas contra ameacas digitais.').
+trilha(ciencia_de_dados, 'Analise e interpretacão de grandes volumes de dados para extrair conhecimento.').
 trilha(redes_e_infraestrutura, 'Gerenciamento de redes, servidores e infraestrutura de TI.').
-trilha(devops, 'Automatização de processos de desenvolvimento e operações de software.').
-trilha(jogos_digitais, 'Desenvolvimento e design de jogos eletrônicos para diversas plataformas.').
+trilha(devops, 'Automatizacao de processos de desenvolvimento e operacoes de software.').
+trilha(jogos_digitais, 'Desenvolvimento e design de jogos eletronicos para diversas plataformas.').
 
 % Características de perfil (trilha, habilidade/interesse, peso)
 perfil(inteligencia_artificial, matematica, 5). 
@@ -44,23 +44,23 @@ perfil(jogos_digitais, programacao, 3).
 perfil(jogos_digitais, design_de_som, 3).
 
 % Perguntas para o usuário (id, texto da pergunta, característica associada)
-pergunta(1, 'Você tem afinidade com matemática?', matematica).
-pergunta(2, 'Você gosta de lógica e raciocínio?', logica).
-pergunta(3, 'Você tem interesse em programação?', programacao).
-pergunta(4, 'Você aprecia design e criatividade visual?', design_visual).
-pergunta(5, 'Você tem atenção a detalhes?', atencao_a_detalhes).
-pergunta(6, 'Você gosta de trabalhar com redes e infraestrutura?', redes).
-pergunta(7, 'Você gosta de analisar e interpretar dados?', analise_dados).
-pergunta(8, 'Você tem facilidade com estatística?', matematica_estatistica).
-pergunta(9, 'Você gosta de resolver problemas técnicos?', resolucao_problemas).
-pergunta(10, 'Você entende de hardware?', hardware).
-pergunta(11, 'Você se interessa por automação de processos?', automatizacao).
-pergunta(12, 'Você tem conhecimentos em computação em nuvem?', conhecimento_cloud).
-pergunta(13, 'Você tem criatividade para design e desenvolvimento de jogos?', criatividade).
-pergunta(14, 'Você tem interesse e conhecimento em aprendizado de máquina?', aprendizado_maquina).
-pergunta(15, 'Você se interessa por usabilidade e experiência do usuário?', usabilidade).
-pergunta(16, 'Você gosta de trabalhar pensando na segurança com criptografia?', criptografia).
-pergunta(17, 'Você tem facilidade para criar visualizações de dados claras e úteis?', visualizacao_de_dados).
-pergunta(18, 'Você sabe configurar servidores e gerenciar serviços?', configuracao_servidores).
-pergunta(19, 'Você tem experiência com gerenciamento de configurações em sistemas?', gerenciamento_de_configuracoes).
-pergunta(20, 'Você gosta de trabalhar com design de som e efeitos para jogos?', design_de_som).
+pergunta(1, 'Voce tem afinidade com matematica?', matematica).
+pergunta(2, 'Voce gosta de logica e raciocinio?', logica).
+pergunta(3, 'Voce tem interesse em programacao?', programacao).
+pergunta(4, 'Voce aprecia design e criatividade visual?', design_visual).
+pergunta(5, 'Voce tem atencao a detalhes?', atencao_a_detalhes).
+pergunta(6, 'Voce gosta de trabalhar com redes e infraestrutura?', redes).
+pergunta(7, 'Voce gosta de analisar e interpretar dados?', analise_dados).
+pergunta(8, 'Voce tem facilidade com estatistica?', matematica_estatistica).
+pergunta(9, 'Voce gosta de resolver problemas tecnicos?', resolucao_problemas).
+pergunta(10, 'Voce entende de hardware?', hardware).
+pergunta(11, 'Voce se interessa por automacao de processos?', automatizacao).
+pergunta(12, 'Voce tem conhecimentos em computacao em nuvem?', conhecimento_cloud).
+pergunta(13, 'Voce tem criatividade para design e desenvolvimento de jogos?', criatividade).
+pergunta(14, 'Voce tem interesse e conhecimento em aprendizado de maquina?', aprendizado_maquina).
+pergunta(15, 'Voce se interessa por usabilidade e experiencia do usuario?', usabilidade).
+pergunta(16, 'Voce gosta de trabalhar pensando na seguranca com criptografia?', criptografia).
+pergunta(17, 'Voce tem facilidade para criar visualizacoes de dados claras e uteis?', visualizacao_de_dados).
+pergunta(18, 'Voce sabe configurar servidores e gerenciar servicos?', configuracao_servidores).
+pergunta(19, 'Voce tem experiencia com gerenciamento de configuracoes em sistemas?', gerenciamento_de_configuracoes).
+pergunta(20, 'Voce gosta de trabalhar com design de som e efeitos para jogos?', design_de_som).
