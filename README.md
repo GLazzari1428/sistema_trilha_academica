@@ -26,11 +26,13 @@
 ---
 
 ## 2. Funcionalidades
+O sistema foi implementado com as seguintes funcionalidades:
+- **Interação com o usuário:** O sistema interage com o usuário por meio de um questionário dinâmico para coletar suas preferências, habilidades e afinidades.
+- **Motor de Inferência:** Utiliza regras para processar as respostas e calcular a compatibilidade do perfil do aluno com cada trilha de especialização.
+- **Ranking de Recomendações:** Apresenta uma lista ordenada das trilhas mais compatíveis.
+- **Justificativas por trilha**: Apresenta quais respostas do usuário levaram a cada sugestão de trilha.
+- **Modo de Teste:** Permite a execução automatizada com perfis de teste pré-definidos para validar a lógica do sistema.
 
-- **Função 1:**
-- **Função 2:**
-- **Função 3:**
-- **Função 4:**
 
 ---
 
@@ -38,54 +40,141 @@
 
 O projeto está organizado da seguinte forma para facilitar a navegação e o entendimento:
 
-```
+```bash
 .
-├── 
-├── 
-└── README.md     #descrição completa do projeto
+├── base_conhecimento.pl # Fatos e regras que definem a lógica do sistema.
+├── main.pl              # Contém o motor de inferência principal do sistema.
+├── ui.pl                # Responsável pela interface de usuário e fluxo de execução.
+├── perfis-de-teste/     # Contém os arquivos de perfil para o modo de teste.
+│   ├── perfil_1.pl
+│   ├── perfil_2.pl
+│   └── perfil_3.pl
+└── README.md            # Descrição completa do projeto.
 ```
 
 ---
 
-## 4. Como Compilar e Executar
+## 4. Como Executar
 
+Para executar o projeto é necessário ter instalado localmente um ambiente de Prolog. Abaixo um link para um tutorial de instalação:
+>[Tutorial de instalação para Windows, Linux e MacOS.](https://wwu-pi.github.io/tutorials/lectures/lsp/010_install_swi_prolog.html)
 
+Após instalado, utilize o comando abaixo para acessar o ambiente de prolog:
+
+```bash
+[user@machine ~]$ swipl
+Welcome to SWI-Prolog (threaded, 64 bits, version 9.2.9)
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software.
+Please run ?- license. for legal details.
+
+For online help and background, visit https://www.swi-prolog.org
+For built-in help, use ?- help(Topic). or ?- apropos(Word).
+
+?- 
+```
 ### 4.1. Modo Interativo
 
 
-### 4.2. Modo de Teste
 
+### 4.2. Modo de Teste
+O primeiro passo para iniciar o programa em modo de teste é inicializar as funções `ui.pl` e `main.pl` dentro do ambiente prolog, utilizando o seguinte comando:
+
+```prolog
+?- [main, ui].
+true. %se tiver este output, o programa foi inicializado corretamente
+```
+Após isso pode-se utilizar um dos comandos abaixo para realizar uma rotina de testes para um dos 3 perfis:
+
+```prolog
+?- modo_teste('perfis-de-teste/perfil_1.pl'). %perfil 1
+?- modo_teste('perfis-de-teste/perfil_2.pl'). %perfil 2
+?- modo_teste('perfis-de-teste/perfil_3.pl'). %perfil 3
+```
+O output deve ser algo parecido com isso:
+
+```prolog
+?- modo_teste('perfis-de-teste/perfil_1.pl'). %perfil 1
+
+Sistema Especialista: Trilha Academica
+Grupo 7: Gustavo Lazari, Mateus Roese Tucunduva, Matheus Yamomoto Dias, Victor Ryuki Tamezava
+-----------------------------------------------------
+% Executando em modo de teste com respostas pré-carregadas.
+
+=== Recomendacoes (ordem de compatibilidade) ===
+1) inteligencia_artificial  | Pontos: 18
+    Desenvolvimento de sistemas inteligentes e aprendizado de maquina.
+2) seguranca_da_informacao  | Pontos: 9
+    Protecao de dados e sistemas contra ameacas digitais.
+3) devops  | Pontos: 8
+    Automatizacao de processos de desenvolvimento e operacoes de software.
+4) desenvolvimento_web  | Pontos: 7
+    Criacao e manutencao de sites e aplicacoes web.
+5) redes_e_infraestrutura  | Pontos: 4
+    Gerenciamento de redes, servidores e infraestrutura de TI.
+6) jogos_digitais  | Pontos: 3
+    Desenvolvimento e design de jogos eletronicos para diversas plataformas.
+
+--- Justificativas por trilha ---
+> inteligencia_artificial:
+   - Afinidade com matematica (5 pts)
+   - Afinidade com logica (4 pts)
+   - Afinidade com programacao (4 pts)
+   - Afinidade com aprendizado_maquina (5 pts)
+> seguranca_da_informacao:
+   - Afinidade com logica (4 pts)
+   - Afinidade com atencao_a_detalhes (5 pts)
+> devops:
+   - Afinidade com automatizacao (5 pts)
+   - Afinidade com programacao (3 pts)
+> desenvolvimento_web:
+   - Afinidade com programacao (3 pts)
+   - Afinidade com usabilidade (4 pts)
+> redes_e_infraestrutura:
+   - Afinidade com resolucao_problemas (4 pts)
+> jogos_digitais:
+   - Afinidade com programacao (3 pts)
+
+-----------------------------------------------------
+Concluido.
+
+true.
+
+```
 
 ---
 
 ## 5. Base de Conhecimento
 
+### 5.1 Trilhas de Especialização
 
-#### 5.1 Trilhas de Especialização
+A base contém estas 7 trilhas de especialização:
 
-A base contém X trilhas de especialização:
+- *Inteligência Artificial*
+- *Desinvolvimento Web*
+- *Segurança da Informação*
+- *Ciência de Dados*
+- *Redes e Infraestrutura*
+- *DevOps*
+- *Jogos Digitais*
 
-- *Trilha 1*
-- *Trilha 2*
-- *Trilha 3*
-- *Trilha 4*
-- *Trilha 5*
-
-
-#### 5.2 Características de Perfil e Pesos
+### 5.2 Características de Perfil e Pesos
 
 Cada trilha está associada a um conjunto de habilidades e interesses, cada um com um peso de relevância (1 a 5) que indica sua importância para aquela trilha específica.
 
-* **Exemplo:**
+* **Exemplo em Prolog:**
     ```prolog
-        ***** CÓDIGO EM PROLOG *****
+    % Características de perfil (trilha, habilidade/interesse, peso)
+    perfil(inteligencia_artificial, matematica, 5).
+    perfil(desenvolvimento_web, design_visual, 4).
     ```
 
-#### 5.3 Perguntas
+### 5.3 Perguntas
 
 As perguntas são utilizadas para mapear os interesses do usuário às características de perfil definidas.
 
-* **Exemplo:**
+* **Exemplo em Prolog:**
     ```prolog
-        ***** CÓDIGO EM PROLOG *****
+    % Perguntas para o usuário (id, texto da pergunta, característica associada)
+    pergunta(1, 'Voce tem afinidade com matematica?', matematica).
+    pergunta(4, 'Voce aprecia design e criatividade visual?', design_visual).
     ```
