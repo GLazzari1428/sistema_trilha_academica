@@ -21,7 +21,7 @@
 
 ## 1. Objetivo do Projeto
 
-*Descrição do projeto*
+Este projeto consiste no desenvolvimento de um Sistema Especialista em Prolog, projetado para auxiliar estudantes de tecnologia na escolha de uma trilha de especialização acadêmica. Utilizando uma base de conhecimento com regras e fatos predefinidos, o sistema aplica um motor de inferência para analisar o perfil do usuário, calcular a compatibilidade com as trilhas disponíveis e, ao final, apresentar um ranking de recomendações com as respectivas justificativas. Além disso o sistema conta com um modo de teste, que permite realizar um teste rápido da funcionalidade lógica do sistema.
 
 ---
 
